@@ -102,14 +102,14 @@ DEFAULT CHARACTER SET = latin1;
 CREATE  TABLE IF NOT EXISTS `condominio`.`historico` (
   `id_hist` INT(5) NOT NULL ,
   `id_requisicao` INT(5) NOT NULL ,
-  `cpf` VARCHAR(11) NOT NULL ,
+  `id_usuario` INT(20) ,
   `data_atualizacao` DATETIME NOT NULL ,
   `id_status` INT(5) NOT NULL ,
   `detalhes` VARCHAR(200) NOT NULL ,
   PRIMARY KEY (`id_hist`) ,
   INDEX `FK_hist_requisicao_id_requisicao` (`id_requisicao` ASC) ,
   INDEX `FK_hist_status_id_status` (`id_status` ASC) ,
-  INDEX `FK_hist_usuario_cpf` (`cpf` ASC) ,
+  INDEX `FK_hist_usuario_id_usuario` (`id_usuario` ASC) ,
   CONSTRAINT `FK_hist_requisicao_id_requisicao`
     FOREIGN KEY (`id_requisicao` )
     REFERENCES `condominio`.`requisicao` (`id_requisicao` )
@@ -120,22 +120,11 @@ CREATE  TABLE IF NOT EXISTS `condominio`.`historico` (
     REFERENCES `condominio`.`status` (`id_status` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `FK_hist_usuario_cpf`
-    FOREIGN KEY (`cpf` )
-    REFERENCES `condominio`.`usuario` (`cpf` )
+  CONSTRAINT `FK_hist_usuario_id_usuario`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `condominio`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `condominio`.`permissao`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `condominio`.`permissao` (
-  `id_permissao` INT(5) NOT NULL ,
-  `titulo` VARCHAR(100) NOT NULL ,
-  PRIMARY KEY (`id_permissao`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
@@ -145,17 +134,17 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `condominio`.`seguranca` (
   `id_permissao` INT(5) NOT NULL ,
-  `cpf` VARCHAR(11) NOT NULL ,
-  PRIMARY KEY (`id_permissao`, `cpf`) ,
-  INDEX `FK_seg_usuario_cpf` (`cpf` ASC) ,
+  `id_usuario` INT(20) ,
+  PRIMARY KEY (`id_permissao`, `id_usuario`) ,
+  INDEX `FK_seg_usuario_id_usuario` (`id_usuario` ASC) ,
   CONSTRAINT `FK_seg_permissao_id_permissao`
     FOREIGN KEY (`id_permissao` )
     REFERENCES `condominio`.`permissao` (`id_permissao` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `FK_seg_usuario_cpf`
-    FOREIGN KEY (`cpf` )
-    REFERENCES `condominio`.`usuario` (`cpf` )
+  CONSTRAINT `FK_seg_usuario_id_usuario`
+    FOREIGN KEY (`id_usuario` )
+    REFERENCES `condominio`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
