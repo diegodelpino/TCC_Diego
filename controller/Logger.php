@@ -15,8 +15,10 @@
  			$texto = "[$hora][$ip]> $msg \n";
  		
  			$manipular = fopen("$arquivo", "a+b");
- 			fwrite($manipular, $texto);
+ 			fwrite($manipular, utf8_encode($texto));
  			fclose($manipular);
  	}
+ 
+
  
 ?>
