@@ -1,46 +1,17 @@
 <?php
 include_once 'Logger.php';
-include_once '../dao/RequisicaoDAO.php';
+//include_once '../dao/RequisicaoDAO.php';
 
 class SrvRequisicao {
 
 	private $requisicaodao;
 
 	public function __construct() {
-		$this->$requisicaodao = new RequisicaoDAO ();
+		//$this->$requisicaodao = new RequisicaoDAO ();
 	}
 
-	public function buscaRequisicao() {
-		try {
-			
-			// TODO Refactor this code, to use json_encode
-			
-			$json = '[';
-			
-			$result = $this->produtodao->Lista ();
-			
-			foreach ( $result as $value ) {
-				
-				$descricao = str_replace ( '\\', '\\\\', $value->descricao );
-				$descricao = str_replace ( '"', '\"', $descricao );
-				
-				$json .= '{"idProduto"   :"' . $value->idProduto . '"
-						  ,"descricao"   :"' . $descricao . '"
-				 		  ,"unidade"     :"' . $value->unidade . '"
-				 		  ,"custoUnit"   :"' . number_format ( $value->custoUnit, 2, '.', '' ) . '"
-				 		  ,"categoria"   :"' . $value->categoria . '"
-				 		  ,"fabricante"  :"' . $value->fabricante . '"
-				 		  ,"fornecedor"  :"' . $value->fornecedor . '"
-				 		  ,"ativo"       :"' . $value->ativo . '"},';
-			}
-			
-			$json = rtrim ( $json, "," );
-			$json .= ']';
-			
-			echo $json;
-		} catch ( Exception $e ) {
-			Logger ( "(file:" . $e->getFile () . ",line:" . $e->getLine () . ") buscaProduto : " . $e->getMessage () );
-		}
+	public function listaRequisicao() {
+		Logger("aham");
 	}
 
 	public function salvaRequisicao() {
@@ -144,21 +115,10 @@ class SrvRequisicao {
 
 $srvRequisicao = new SrvRequisicao ();
 
-if (isset ( $_GET ["buscaProduto"] )) {
-	$srvProduto->buscaProduto ();
+if (isset ( $_GET ["listaRequisicao"] )) {
+	$srvRequisicao->listaRequisicao();
 }
 
-if (isset ( $_GET ["salvaProduto"] )) {
-	$srvProduto->salvaProduto ();
-}
-
-if (isset ( $_GET ["editaProduto"] )) {
-	$srvProduto->editaProduto ( $_REQUEST ['idProduto'] );
-}
-
-if (isset ( $_GET ["removeProduto"] )) {
-	$srvProduto->removeProduto ( $_REQUEST ['id'] );
-}
 
 
 ?>

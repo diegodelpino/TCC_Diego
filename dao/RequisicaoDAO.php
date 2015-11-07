@@ -1,6 +1,6 @@
 <?php
-include "../controller/Sessao.php";
-include '../controller/Conexao.php';
+include_once "../controller/Sessao.php";
+include_once '../controller/Conexao.php';
 include_once '../model/Requisicao.php';
 
 class RequisicaoDAO {
@@ -72,38 +72,7 @@ class RequisicaoDAO {
 			
 	}
 	
-	public function buscaRequisicaoCalculado($idRequisicao,$quantidade){
-
-		$result = mysql_query( "select aliquota from tributo where nome = 'mg_materiais'");
-		
-		if(mysql_errno()){
-			throw new Exception(mysql_error());
-		}
-		
-		$row = mysql_fetch_assoc($result);
-		$mg_requisicao = $row["aliquota"];
 	
-		$result = mysql_query( "select custoUnit from requisicao where idRequisicao = $idRequisicao") ;
-		
-		if(mysql_errno()){
-			throw new Exception(mysql_error());
-		}
-		
-		$row = mysql_fetch_assoc($result);
-		$custoUnit = $row["custoUnit"];
-	
-		$valorUnit = $custoUnit + ($custoUnit * ($mg_requisicao/100));
-		$custoTotal = $quantidade * $custoUnit;
-		$valorTotal= $quantidade * ($custoUnit + ($custoUnit * ($mg_requisicao/100)));
-	
-		$prdlista = array('valorUnit' =>$valorUnit
-				,'valorTotal'=>$valorTotal
-				,'custoUnit' =>$custoUnit
-				,'custoTotal'=>$custoTotal
-				,'margen'	  =>$mg_requisicao);
-	
-		return $prdlista;
-	}
 
 }
 
