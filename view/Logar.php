@@ -1,4 +1,5 @@
 <?php
+//TODO:IGNORE
    echo "Cookie " . isset($_COOKIE["rdpassagens"]);
    if(isset($_COOKIE["rdpassagens"])){ //se existir um cookie de senha, pula direto para a p�gina de verifica��o 
      include("./controller/VerificaCookie.php");  //"login autom�tico"
@@ -43,9 +44,9 @@
         	}
         ?>
         
-		<input type="email" name="email" class="form-control" placeholder="E-mail" required autofocus>
+		<input type="text" name="username" class="form-control" required autofocus>
         
-		<input type="password" name="passwd" class="form-control" placeholder="Senha" required>
+		<input type="password" name="password" class="form-control" placeholder="Senha" required>
         
 		<label class="checkbox">
           <input type="checkbox" name="lembrar" value="lembrar-login"> Lembrar login

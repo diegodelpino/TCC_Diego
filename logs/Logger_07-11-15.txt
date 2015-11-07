@@ -1,1 +1,64 @@
 [10:45:35][::1]> aham 
+[11:27:34][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:27:54][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:28:10][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:28:24][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:28:26][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:28:27][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:28:29][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:28:31][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:28:47][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:28:51][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:28:54][::1]> (file:C:\xampp\htdocs\xampp\php\TCC_Oficial\TCC_Diego\controller\ConfDB.php ,line:16 ,message:SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+) 
+[11:46:12][::1]> Autenticando usuÃ¡rio : login = , senha =  
+[11:46:12][::1]> UsuÃ¡rio ou senha em branco. 
+[11:51:48][::1]> Autenticando usuÃ¡rio : login = , senha =  
+[11:51:48][::1]> UsuÃ¡rio ou senha em branco. 
+[11:52:00][::1]> Autenticando usuÃ¡rio : login = , senha =  
+[11:52:00][::1]> UsuÃ¡rio ou senha em branco. 
+[11:52:23][::1]> Autenticando usuÃ¡rio : login = , senha =  
+[11:52:23][::1]> UsuÃ¡rio ou senha em branco. 
+[14:10:15][::1]> Autenticando usuÃ¡rio : login = , senha =  
+[14:10:15][::1]> UsuÃ¡rio ou senha em branco. 
+[14:13:55][::1]> Autenticando usuÃ¡rio : login = diegodelpino, password	= xdokbca 
+[14:16:12][::1]> Autenticando usuÃ¡rio : login = diegodelpino, password= xdokbca 
+[14:17:09][::1]> Autenticando usuÃ¡rio : login = diegodelpino, password= xdokbca 
+[14:17:09][::1]> hdisidj 
+[14:18:37][::1]> Autenticando usuÃ¡rio : login = , password=  
+[14:18:37][::1]> UsuÃ¡rio ou senha em branco. 
+[14:18:49][::1]> Autenticando usuÃ¡rio : login = diegodelpino, password= xdokbca 
+[14:18:49][::1]> hdisidj 
+[14:18:49][::1]> sssssss 
+[14:19:55][::1]> Autenticando usuÃ¡rio : login = diegodelpino, password= xdokbca 
+[14:19:55][::1]> hdisidj 
+[14:19:55][::1]> sssssss 
+[14:19:55][::1]> Aaaaa 
+[14:19:55][::1]> fffff 
+[14:19:55][::1]> AUT :  
+[14:19:55][::1]> Iniciando uma sessÃ£o para o usuÃ¡rio : diegodelpino 
+[14:24:17][::1]> Autenticando usuÃ¡rio : login = diegodelpino, password= xdokbca 
+[14:24:17][::1]> hdisidj 
+[14:24:17][::1]> sssssss 
+[14:24:17][::1]> Aaaaa 
+[14:24:17][::1]> fffff 
+[14:24:17][::1]> AUT :  
+[14:24:17][::1]> Iniciando uma sessÃ£o para o usuÃ¡rio : diegodelpino 
+[14:25:46][::1]> Autenticando usuÃ¡rio : login = diegodelpino, password= xdokbca 
+[14:25:46][::1]> hdisidj 
+[14:25:46][::1]> sssssss 
+[14:25:46][::1]> Aaaaa 
+[14:25:46][::1]> fffff 
+[14:25:46][::1]> AUT :  
+[14:25:46][::1]> Iniciando uma sessÃ£o para o usuÃ¡rio : diegodelpino 
+[14:25:46][::1]> DIEGO DEL PINO 

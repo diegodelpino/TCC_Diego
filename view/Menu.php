@@ -1,5 +1,5 @@
 <?php
-include_once '../model/Cliente.php';
+include_once '../model/Usuario.php';
 include_once '../controller/Sessao.php';
 
 if (isset ( $_SESSION ['logado'] )) {
