@@ -10,15 +10,11 @@ INSERT INTO `condominio`.`usuario`
 (`cpf`,`nome`,`telefone`,`unidade`,`login`,`senha`)
 VALUES ("00100200304","MANOEL GONZAGA",81112222,303,"manoelgonzaga","xdokbca");
 
-INSERT INTO `condominio`.`permissao`(`id_permissao`,`titulo`) VALUES (1,"CONDÔMINO");
+INSERT INTO `condominio`.`seguranca`(`id_permissao`,`cpf`) VALUES (1,3);
 
-INSERT INTO `condominio`.`permissao`(`id_permissao`,`titulo`) VALUES (2,"SÍNDICO");
+INSERT INTO `condominio`.`seguranca` (`id_permissao`,`cpf`) VALUES (1,2);
 
-INSERT INTO `condominio`.`seguranca`(`id_permissao`,`cpf`) VALUES (1,"00100200304");
-
-INSERT INTO `condominio`.`seguranca` (`id_permissao`,`cpf`) VALUES (1,"00557832902");
-
-INSERT INTO `condominio`.`seguranca`(`id_permissao`,`cpf`) VALUES (2,"00448786052");
+INSERT INTO `condominio`.`seguranca`(`id_permissao`,`cpf`) VALUES (2,1);
 
 INSERT INTO `condominio`.`fornecedor`
 (`id_fornecedor`,`nome`,`endereço`,`cpf`,`cnpj`,`telefone`,`detalhes`)
@@ -97,17 +93,17 @@ INSERT INTO `condominio`.`status`
 INSERT INTO `condominio`.`historico`
 (`id_hist`,`id_requisicao`,`cpf`,`data_atualizacao`,`id_status`,`detalhes`)
 VALUES
-(1,1,"00448786052","2015-10-31",1,"Requisição iniciada");
+(1,1,1,"2015-10-31",1,"Requisição iniciada");
 
 INSERT INTO `condominio`.`historico`
 (`id_hist`,`id_requisicao`,`cpf`,`data_atualizacao`,`id_status`,`detalhes`)
 VALUES
-(2,1,"00448786052","2015-11-1",2,"Solicitação em andamento");
+(2,1,1,"2015-11-1",2,"Solicitação em andamento");
 
 INSERT INTO `condominio`.`historico`
 (`id_hist`,`id_requisicao`,`cpf`,`data_atualizacao`,`id_status`,`detalhes`)
 VALUES
-(3,3,"00100200304","2015-10-31",1,"Requisição iniciada");
+(3,3,3,"2015-10-31",1,"Requisição iniciada");
 
 INSERT INTO `condominio`.`solicitacao`
 (`id_cat`,`id_requisicao`)

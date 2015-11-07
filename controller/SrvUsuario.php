@@ -1,7 +1,7 @@
 <?php
 include_once '../model/Hotel.php';
 include_once '../model/Voo.php';
-include_once '../model/Cliente.php';
+include_once '../model/Usuario.php';
 include_once 'ConfDB.php';
 include_once 'Logger.php';
 include_once 'Sessao.php';
@@ -12,60 +12,50 @@ class SrvUsuario {
 		date_default_timezone_set('America/Sao_Paulo');
 	}
 	
-	public static function autenticaUsuario($login, $senha, $lembrar, $aut) {
+	public static function autenticaUsuario($login, $senha) {
 		try {
 			// instancia objeto PDO, conectando no mysql
 			$conexao = conn_mysql ();
 			
 			// instrução SQL básica (sem restrição de nome)
-			$SQLSelect = 'SELECT `cliente_Cod` as id,
-								`cliente_Email` as email,
-								`cliente_Senha` as senha,
-								`cliente_Cidade` as cidade,
-								`cliente_Nome` as nome,
-								`cliente_Foto` as foto,
-								(SELECT 
-						            cidade_Nome
-						        FROM
-						            cidades
-						        WHERE
-						            cidade_Cod = cl.cliente_Cidade) AS nomeCidade
-								FROM clientes cl WHERE cliente_Email = ? AND cliente_Senha = MD5(?)';
+			
+			$SQLSelect = "SELECT nome FROM usuario WHERE login = ? and senha = ?";
 			
 			// prepara a execução da sentença
 			$operacao = $conexao->prepare ( $SQLSelect );
-			
+						
 			// executa a sentença SQL com o valor passado por parâmetro
-			$pesquisar = $operacao->execute ( array (
-					$login,
-					$senha 
-			) );
-			
-			$cliente = $operacao->fetchObject("Cliente");
-			
+			Logger("sssssss");
+			   $pesquisar = $operacao->execute ( array (
+				 $login,
+				 $senha 
+			   ) );			
+			Logger("Aaaaa");			
+			$usuario = $operacao->fetchObject("Usuario");
+			Logger("fffff");
 			// fecha a conexão (os resultados já estão capturados)
 			$conexao = null;
 			
 			Logger("AUT : " . $aut);
 				
-			if (!$cliente) {
+			if (!$usuario) {
 				Logger("Usuário ou senha inválido : login = " . $login . ", senha = ". $senha);
 				header ( "location:../view/Logar.php?err=1" );
 				die ();
 			} else {
 				
 				// Keep logging
-				if ($lembrar) {
+/* 				if ($lembrar) {
 					Logger("Criando cookie para o usuário : " .$login);
 					setcookie ( 'rdpassagens', $login . "|" . $senha, time () +60*60*24*90 );
-				}
+				} */
 				
 				Logger("Iniciando uma sessão para o usuário : " .utf8_decode($login));
 				session_start (); // inicia a sessao
 				$_SESSION ['logado'] = true;
 				$_SESSION ['login'] = $login;
-				$_SESSION ['cliente']= $cliente;
-				
+				$_SESSION ['usuario']= $usuario;
+				Logger($usuario->getNome());
 				header ( "Location: ../view/Principal.php" );
 
 				die ();
@@ -190,14 +180,14 @@ class SrvUsuario {
 												`reservasVoo_PrecoTotal`)
 												VALUES(?,?,?,?)');
 				
-				$cliente = $_SESSION["cliente"];
+				$usuario = $_SESSION["usuario"];
 				
 				foreach ($_SESSION["hotel"] as $hotel){
-					$inserir = $insertHotel->execute(array($cliente->getId(), $hotel->getId(), $hotel->getDtIn(), $hotel->getDtOut(), $hotel->getTotalDiarias()));
+					$inserir = $insertHotel->execute(array($usuario->getId(), $hotel->getId(), $hotel->getDtIn(), $hotel->getDtOut(), $hotel->getTotalDiarias()));
 				}
 				
 				foreach ($_SESSION["voo"] as $voo){
-					$inserir = $insertVoo->execute(array($cliente->getId(), $voo->getId(), 200, $voo->getPreco()));
+					$inserir = $insertVoo->execute(array($usuario->getId(), $voo->getId(), 200, $voo->getPreco()));
 				}
 				
 				unset($_SESSION["voo"]);
@@ -436,9 +426,11 @@ class SrvUsuario {
 $srvUsuario = new SrvUsuario ();
 
 if (isset ( $_GET ["autenticaUsuario"] )) {
-	Logger("Autenticando usuário : login = " . $_POST ["email"] . ", senha = ". $_POST ["passwd"] );
-	if (isset ( $_POST ["email"] ) && isset ( $_POST ["passwd"] )) {
-		$srvUsuario->autenticaUsuario ( $_POST ["email"], $_POST ["passwd"], isset($_POST ["lembrar"]), $_POST ["aut"] );
+	Logger("Autenticando usuário : login = " . $_POST ["username"] . ", password= ". $_POST ["password"] );
+	if (isset ( $_POST ["username"] ) && isset ( $_POST ["password"] )) {
+		Logger("hdisidj");
+		$srvUsuario->autenticaUsuario ( $_POST ["username"], $_POST ["password"]);
+		
 	} else {
 		Logger ( "Usuário ou senha em branco." );
 		header ( "location:../index.php?err=1" );

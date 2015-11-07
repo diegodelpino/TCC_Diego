@@ -65,15 +65,11 @@
          
          <div class="col-md-9">
 	         <?php 
-	        	$cliente = $_SESSION["cliente"];
-	         	echo '<img alt="Perfil" src="../images/'.$cliente->getFoto().'" width="200px" height="200px" style="float : left; margin-right : 12px;" >';
-	         	echo '<ul style="list-style-type:none">';
+	        	$usuario = $_SESSION["usuario"];
+	         	//echo '<img alt="Perfil" src="../images/'.$usuario->getFoto().'" width="200px" height="200px" style="float : left; margin-right : 12px;" >';
+	         	//echo '<ul style="list-style-type:none">';
 	         	echo '<li><label for="nome">Nome : </label>';
-	         	echo '<span id="nome">'.$cliente->getNome().'</span></li>';
-	         	echo '<li><label for="nome">Email : </label>';
-	         	echo '<span id="nome">'.$cliente->getEmail().'</span></li>';
-	         	echo '<li><label for="nome">Cidade : </label>';
-	         	echo '<span id="nome">'.$cliente->getNomeCidade().'</span></li>';
+	         	echo '<span id="nome">'.$usuario->getNome().'</span></li>';
 	         	
 	         ?>
 			</ul>	

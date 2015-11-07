@@ -9,7 +9,7 @@
 	//}
 	
 	//check usuário
-	$user = mysql_query("SELECT * FROM usuario WHERE login='".$_POST["username"]."' AND senha='".md5($_POST["password"])."'" ) or die(mysql_error());
+	$user = mysql_query("SELECT * FROM usuario WHERE login='".$_POST["username"]."' AND senha='".$_POST["password"]."'" ) or die(mysql_error());
 	
 	$result = mysql_fetch_array($user);
 		
@@ -19,7 +19,7 @@
 				$_SESSION["login"] = $_POST["username"];
 				$_SESSION["senha"] = $_POST["password"];
 				$_SESSION["idUsuario"] = $result["idUsuario"];
-
+				$_SESSION["logado"] = true;
 				
 				header("location:../view/principal.php");
 				/* if($_SESSION["login"] == "admin"){
