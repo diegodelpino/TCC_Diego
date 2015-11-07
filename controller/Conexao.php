@@ -1,8 +1,9 @@
 <?php
 //configura��es do banco
 
-$conexao = mysql_connect("localhost","root","rdsd@2016") or die (mysql_error());
+
+$conexao = mysql_connect("localhost","root","Bool21KZ") or die (mysql_error());
 //$conexao->set_charset('utf-8');
-mysql_select_db("propostacomercial" , $conexao) or die (mysql_error());
+mysql_select_db("condominio" , $conexao) or die (mysql_error());
 
 ?>

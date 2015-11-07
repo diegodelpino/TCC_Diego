@@ -2,13 +2,11 @@
  function conn_mysql(){
 
    $servidor = 'localhost';
-   $porta = 3307;
-   $banco = "daw_turismo";
-   $usuario = "daw";
-   $senha = "daw2015";
+   $banco = "condominio";
+   $usuario = "root";
+   $senha = "Bool21KZ";
    
       $conn = new PDO("mysql:host=$servidor;
-	                   port=$porta;
 					   dbname=$banco", 
 					   $usuario, 
 					   $senha,
