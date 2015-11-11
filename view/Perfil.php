@@ -38,8 +38,8 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="Principal.php">Início</a>
-				<a class="navbar-brand" id="menuHotel" href="#">Hotéis</a>
+				<a class="navbar-brand" href="Principal.php">Lista de Requisições</a>
+				<a class="navbar-brand" id="menuHotel" href="EditarRequisicao.php">Cadastrar Requisições</a>
 				<a class="navbar-brand" id="menuVoo"  href="#">Voos</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,8 +58,9 @@
 	<div class="container">
 		 <div class="col-md-3">
          	<div class="list-group">
-                <a href="#" class="list-group-item">Editar Perfil</a>
-                <a href="#" class="list-group-item">Remover Perfil</a>
+                <a href="cadastro.php?edita=true" class="list-group-item" id = "botaoEditar">Editar Perfil</a>
+				
+                <a href="#" class="list-group-item" id = "botaoRemover">Remover Perfil</a>
             </div>
          </div>
          
@@ -73,34 +74,7 @@
 	         	
 	         ?>
 			</ul>	
-			<div style="clear: left;">
-				<h3>Hotéis</h3>
-				<table class="table table-hover table-striped table-bordered ">
-					<thead id="listaHoteisRescentes" >
-						<tr>
-							<th>Produto</th>
-							<th>Cidade</th>
-							<th>Entrada</th>
-							<th>Saída</th>
-							<th>Valor</th>
-						</tr>
-					</thead>
-					<tbody id="listaHoteis"></tbody>
-				</table>
-				
-				<h3>Voos</h3>
-				<table class="table table-hover table-striped table-bordered">
-					<thead id="listaVoosRescentes">
-						<tr>
-							<th>Origem</th>
-							<th>Destino</th>
-							<th>Data</th>
-							<th>Valor</th>
-						</tr>
-					</thead>
-					<tbody id="listaVoos"></tbody>	
-				</table>
-			</div>
+				<!-- TODO: Incluir campos do usuário aqui em lista simples -->
          </div>
          
 	</div>

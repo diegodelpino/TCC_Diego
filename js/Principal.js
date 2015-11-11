@@ -1,34 +1,12 @@
 $(function() {
- 
-    $("#addHotel").click(function(){
-    	addHotelSelected();
-    });
-    
-    $("#addVoo").click(function(){
-    	addVooSelected();
-    });
-   
-    $("#removeHotel").click(function(){
-    	removeHotelSelected();
-    });
-    
-    $("#removeVoo").click(function(){
-    	removeVooSelected();
-    });
-    
+
     $("#menuHotel").click(function(){
-    	addHotel();
-    	addLoadHotel();
-    });
-    
-    $("#menuVoo").click(function(){
-    	addVoo();
-    	addLoadVoo();
+		addLoadRequisicoes();
     });
     
     $(document).on('focus',".dtEntrada,.dtSaida", function(){
         $(this).datepicker({
-        	  dateFormat: "yy-mm-dd"
+			dateFormat: "yy-mm-dd"
         });
     });
     
@@ -41,13 +19,12 @@ function onLoad(){
 	$.get( "../controller/SrvUsuario.php?countItems=true", function( data ) {
 		$("#countItems").text(data);
 	});
-	
-	addHotel();
-	addLoadHotel();
+	addHeadersLista();
+	addLoadRequisicoes();
 	
 }
 
-function addHotelSelected(element){
+/* function addHotelSelected(element){
 	
 	var id = element.dataset.id;
 	
@@ -61,134 +38,101 @@ function addHotelSelected(element){
 		},
 		error : function(){}		
 	});
-}
+} */
 
-function addVooSelected(element){
-	
-	var id = element.dataset.id;
 
-	$.ajax({
-		url : "../controller/SrvUsuario.php?addVoo=true",
-		data : { voo : id , dtIn : $("#dtIn_" +id ).val()},
-		type : "POST",
-		dataType : "text",
-		success : function(data){
-			$("#countItems").text(data);
-		},
-		error : function(){}		
-	});
-}
 
-function addHotel(){
+function addHeadersLista(){
 	$("#headListaProdutos tr").remove();
 	
 	$("#headListaProdutos").append(
 				"<tr>"+
-					'<th><input type="text" id="nomeHotel" class="form-control"></input></th>'+
-					'<th><input type="text" id="cidadeOrigem" class="form-control"></input></th>'+
-					'<th><select id="categoria" class="form-control">'+
-							'<option selected>Todos</option>'+
-							'<option>Luxo</option>'+
-							'<option>Básico</option>'+
+					'<th><input type="text" id="titulo" class="form-control"></input></th>'+
+					//'<th><input type="text" id="prioridade" class="form-control"></input></th>'+
+					'<th><select id="prioridade" class="form-control">'+
+							'<option value = "" selected>Todas Prioridades</option>'+
+							'<option value = "1">1 - Emergencial</option>'+
+							'<option value = "2">2 - Urgente</option>'+
+							'<option value = "3">3 - Importante</option>'+
+							'<option value = "4">4 - Normal</option>'+
+							'<option value = "5">5 - Baixa</option>'+
 					'</select></th>'+
-					'<th><input type="number" style="width : 90px;" id="preco" class="form-control" min="0" pattern="[0-9]{10}"></input></th>'+
-					'<th><button type="button" id="btnSearchHotel" class="btn btn-default">Searh</button><button type="button" id="btnSearchClear" class="btn btn-default">Limpa</button></th>'+
+					'<th><select id="status" class="form-control">'+
+							'<option value = "" selected>Todos Status</option>'+
+							'<option value = "ANDAMENTO">Andamento</option>'+
+							'<option value = "INICIAL">Inicial</option>'+
+							'<option value = "CONCLUÍDA">Concluída</option>'+
+							'<option value = "INATIVA">Inativa</option>'+
+							'<option value = "EXCLUÍDA">Excluída</option>'+
+					'</select></th>'+
+					'<th><input type="text" id="data_atualizacao" class="form-control"></input></th>'+
+					'<th><button type="button" id="btnBuscaReq" class="btn btn-default">Busca</button><button type="button" id="btnLimpaBusca" class="btn btn-default">Limpa</button></th>'+
 					'<th></th>'+
 					'<th></th>'+				
 				"</tr>"+
 	        	"<tr>"+
-					"<th>Nome</th>"+
-					"<th>Cidade</th>"+
-					"<th>Categoria</th>"+
-					"<th>Valor</th>"+
-					"<th>Entrada</th>"+
-					"<th>Saída</th>"+
-					"<th></th>"+				
+					"<th>Titulo</th>"+
+					"<th>Prioridade</th>"+
+					"<th>Status</th>"+
+					"<th>Data de Atualização</th>"+
+					"<th>Detalhes</th>"+
 				"</tr>");
 	
-	$("#btnSearchHotel").bind("click", addLoadHotel);
-	$("#btnSearchClear").bind("click", limpaBusca);
+	$("#btnBuscaReq").bind("click", addLoadRequisicoes);
+	$("#btnLimpaBusca").bind("click", limpaBusca);
 }
 
 function limpaBusca(){
-	$("#cidadeOrigem").val('');
-	$("#nomeHotel").val('');
-	$("#categoria").val('');
-	 $("#preco").val('');
-	 
-	addLoadHotel();
+	$("#titulo").val('');
+	$("#prioridade").val('');
+	$("#status").val('');
+	 $("#data_atualizacao").val('');
+	addLoadRequisicoes();
 }
 
-function addLoadHotel(){
+function addLoadRequisicoes(){
 	
 	$("#lista tr").remove();
-	
 	$.ajax({
-		url : "../controller/SrvHotel.php?listaHotel=true",
-		data : {cidadeOrigem : $("#cidadeOrigem").val() , nomeHotel : $("#nomeHotel").val(), categoria : $("#categoria").val(), preco : $("#preco").val() },
+		url : "../controller/SrvRequisicoes.php?listaRequisicoes=true",
+		data : {
+			titulo : $("#titulo").val() , 
+			prioridade : $("#prioridade").val(), 
+			status : $("#status").val(), 
+			data_atualizacao : $("#data_atualizacao").val() 
+		},
 		type : 'POST',
 		dataType : 'json',
 		success : function(data){
+			console.log(data);
 			for ( var element in data) {
-				 createItemHotel(data[element]);
+				 createItemRequisicao(data[element]);
 			}
 		},
-		error : function(){
-			
+		error : function(jqXHR,  textStatus, errorThrown){
+		alert("erro no ajax");
+		console.log(textStatus, errorThrown);
+		console.log(jqXHR);		
 		}
 	});
 }
 
 
-function addVoo(){
-	$("#headListaProdutos tr").remove();
-	
-	$("#headListaProdutos").append(
-	        	"<tr>"+
-					"<th>Origem</th>"+
-					"<th>Destino</th>"+
-					"<th>Data</th>"+
-					"<th>Preço</th>"+
-					"<th></th>"+	
-				"</tr>");
-	
-	
-}
-
-function addLoadVoo(){
-	$("#lista tr").remove();
-	
-	$.getJSON( "../controller/SrvVoo.php?listaVoo=true", function( data ) {
-		 for ( var element in data) {
-			 createItemVoo(data[element]);
-		}
-	});
-}
-
-function createItemHotel(produto){
+function createItemRequisicao(requisicao){
 	
 	$("#lista").append(
 	        "<tr>"+
-		        "<td>"+produto.hotel_Nome+"</td>"+
-		        "<td>"+produto.hotel_Cidade+"</td>"+
-		        "<td>"+produto.hotel_Categoria+"</td>"+
-		        "<td>"+produto.hotel_Diaria+"</td>"+	
-		        '<td><input type="text" id="dtIn_'+produto.hotel_Cod+'" class="dtEntrada"></td>'+
-		        '<td><input type="text" id="dtOut_'+produto.hotel_Cod+'" class="dtSaida"></td>'+
-		        '<td><button type="button" data-id = "'+produto.hotel_Cod+'" onclick="addHotelSelected(this)" class="btn btn-primary btn-xs ">Add</button></td>'+	
+		        "<td>"+requisicao.titulo+"</td>"+
+		        "<td>"+requisicao.prioridade+"</td>"+
+		        "<td>"+requisicao.status+"</td>"+
+		        "<td>"+requisicao.data_atualizacao+"</td>"+	
+		        '<td><button type="button" data-id = "'+requisicao.id_requisicao+'" onclick="editarRequisicao(this)" class="btn btn-primary btn-xs ">Detalhes</button></td>'+	
 	        "</tr>");	
 };
 
-function createItemVoo(produto){
-	
-	$("#lista").append(
-	        "<tr>"+
-		        "<td>"+produto.voo_CidadeOrigem+"</td>"+
-		        "<td>"+produto.voo_CidadeDestino+"</td>"+
-		        "<td>"+produto.voo_Data+"</td>"+
-		        "<td>"+produto.voo_Preco+"</td>"+	
-		        "<td></td>"+
-		        '<td><button type="button" data-id = "'+produto.voo_Cod+'" onclick="addVooSelected(this)" class="btn btn-primary btn-xs ">Add</button></td>'+	
-	        "</tr>");
-	
+function editarRequisicao(element){
+	document.listarequisicao.action="../view/Requisicao.php?edita=true&id_requisicao="+element.dataset.id;
+	document.forms.items.submit();
 };
+
+

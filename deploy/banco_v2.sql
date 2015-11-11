@@ -2,7 +2,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `condominio` DEFAULT CHARACTER SET latin1 ;
+CREATE SCHEMA IF NOT EXISTS `condominio` DEFAULT CHARACTER SET utf8 ;
 USE `condominio` ;
 
 -- -----------------------------------------------------
@@ -13,7 +13,7 @@ CREATE  TABLE IF NOT EXISTS `condominio`.`categoria` (
   `nome` VARCHAR(100) NOT NULL ,
   PRIMARY KEY (`id_cat`) )
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -29,7 +29,7 @@ CREATE  TABLE IF NOT EXISTS `condominio`.`fornecedor` (
   `detalhes` VARCHAR(200) NOT NULL ,
   PRIMARY KEY (`id_fornecedor`) )
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -53,7 +53,7 @@ CREATE  TABLE IF NOT EXISTS `condominio`.`atendimento` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -66,7 +66,7 @@ CREATE  TABLE IF NOT EXISTS `condominio`.`requisicao` (
   `descricao` VARCHAR(100) NOT NULL ,
   PRIMARY KEY (`id_requisicao`) )
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -77,7 +77,7 @@ CREATE  TABLE IF NOT EXISTS `condominio`.`status` (
   `status` VARCHAR(14) NOT NULL ,
   PRIMARY KEY (`id_status`) )
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -93,7 +93,7 @@ CREATE  TABLE IF NOT EXISTS `condominio`.`usuario` (
   `id_usuario` INT(20) NOT NULL AUTO_INCREMENT ,
   PRIMARY KEY (`id_usuario`) )
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -126,29 +126,25 @@ CREATE  TABLE IF NOT EXISTS `condominio`.`historico` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table `condominio`.`seguranca`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `condominio`.`seguranca` (
+  `id_seguranca` INT(5) NOT NULL AUTO_INCREMENT,
   `id_permissao` INT(5) NOT NULL ,
   `id_usuario` INT(20) ,
-  PRIMARY KEY (`id_permissao`, `id_usuario`) ,
+  PRIMARY KEY (`id_seguranca`) ,
   INDEX `FK_seg_usuario_id_usuario` (`id_usuario` ASC) ,
-  CONSTRAINT `FK_seg_permissao_id_permissao`
-    FOREIGN KEY (`id_permissao` )
-    REFERENCES `condominio`.`permissao` (`id_permissao` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `FK_seg_usuario_id_usuario`
     FOREIGN KEY (`id_usuario` )
     REFERENCES `condominio`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -173,7 +169,7 @@ CREATE  TABLE IF NOT EXISTS `condominio`.`servico` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -195,7 +191,7 @@ CREATE  TABLE IF NOT EXISTS `condominio`.`solicitacao` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 USE `condominio` ;
 

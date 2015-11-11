@@ -1,9 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +18,7 @@
 
 <script type="text/javascript" src="../dist/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../dist/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="../js/Cadastro.js"></script>
+<script type="text/javascript" src="../js/EditarUsuario.js"></script>
 
 </head>
 
@@ -56,31 +53,38 @@
 
 	<!-- Page Content -->
 	<div class="container">
-		<form method="post" action="../controller/SrvUsuario.php?salvaCadastro=true" enctype="multipart/form-data">
+		
 		 <div class="form-group">
 		    <label for="nome">Nome</label>
-		    <input type="text" required="true" class="form-control" id="nome" name="nome" placeholder="Nome">
+		    <input type="text" required="true" class="form-control" id="nome" name="nome">
 		  </div>
+		  
+		   <div class="form-group">
+		    <label for="cpf">CPF</label>
+		    <input type="text" required="true" class="form-control" id="cpf" name="cpf" >
+		  </div>
+		  
+		   <div class="form-group">
+		    <label for="unidade">Unidade</label>
+		    <input type="text" required="true" class="form-control" id="unidade" name="unidade" >
+		  </div>
+		  
+		   <div class="form-group">
+		    <label for="telefone">Telefone</label>
+		    <input type="text" required="true" class="form-control" id="telefone" name="telefone" >
+		  </div>
+
 		  <div class="form-group">
-		    <label for="email">Email</label>
-		    <input type="email" required="true" class="form-control" id="email" name="email" placeholder="Email">
+		    <label for="login">Login</label>
+		    <input type="text" required="true" class="form-control" id="login" name="login" >
 		  </div>
+		  
 		  <div class="form-group">
 		    <label for="senha">Senha</label>
 		    <input type="password" required="true" class="form-control" id="senha" name="senha" placeholder="Password">
 		  </div>
-		  <div class="form-group">
-		 	<label for="cidade">Cidade</label>
-		   <select id="cidades" required="true" name="cidade" class="form-control"></select>
-		  </div>
-		  <div class="form-group">
-			<label for="arquivo">Foto</label>
-	    	<input type="file" required="true" id="arquivo" name="arquivo">
-	    	<p class="help-block"></p>
-		  </div>
-
-		  <button type="submit" class="btn btn-default">Submit</button>
-		</form>
+ 
+			<button type="button" id="botaoAlteraUsuario" class="btn btn-default">Salvar</button>
 
 	</div>
 	<!-- /.container -->

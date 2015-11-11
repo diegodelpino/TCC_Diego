@@ -12,6 +12,7 @@
 					   $senha,
 					   array(PDO::ATTR_PERSISTENT => true)
 					   );
+	  $conn->exec("set names utf8");
       return $conn;
    }
 ?>

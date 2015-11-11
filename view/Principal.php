@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Página de produtos</title>
+<title>Lista de Requisições</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,8 @@
 </head>
 
 <body>
-
+	<form name = "listarequisicao" id = "listarequisicao" method = "POST">
+	</form>
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -39,9 +40,9 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="Principal.php">Início</a>
-				<a class="navbar-brand" id="menuVoo"  href="Cadastro.php">Cadastro</a>
-				<a class="navbar-brand" id="menuHotel" href="#">Hotéis</a>
+				<a class="navbar-brand" href="Principal.php">Lista de Requisições	</a>
+				<a class="navbar-brand" id="Requisicao" href="#">Cadastrar Requisição</a>
+				<a class="navbar-brand" id="CadastrarUsuario"  href="Cadastro.php">Cadastro de usuários</a>
 				<a class="navbar-brand" id="menuVoo"  href="#">Voos</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
